@@ -1,0 +1,28 @@
+{
+    "name": "contao-components/tablesorter",
+    "type": "component",
+    "description": "jQuery tablesorter integration for Contao Open Source CMS",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Leo Feyer",
+            "homepage": "https://github.com/leofeyer"
+        }
+    ],
+    "require": {
+        "robloach/component-installer": "~0.0"
+    },
+    "extra": {
+        "component": {
+            "scripts": [
+                "js/tablesorter.min.js"
+            ],
+            "styles": [
+                "css/tablesorter.min.css"
+            ],
+            "files": [
+                "images/*"
+            ]
+        }
+    }
+}
