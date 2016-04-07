@@ -7,13 +7,13 @@
  */
 
 table.sortable thead th {
-	background-image:url("../images/default.gif");
+	background-image:url("../images/default.svg");
 	background-repeat:no-repeat;
 	background-position:center right;
 }
 table.sortable thead th.headerSortDown {
-	background-image:url("../images/asc.gif");
+	background-image:url("../images/asc.svg");
 }
 table.sortable thead th.headerSortUp {
-	background-image:url("../images/desc.gif");
+	background-image:url("../images/desc.svg");
 }
