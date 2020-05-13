@@ -5,7 +5,6 @@ var gulp = require('gulp'),
     ignore = require('gulp-ignore'),
     rename = require('gulp-rename'),
     svgo = require('gulp-svgo'),
-    uglify = require('gulp-uglify'),
     pump = require('pump');
 
 gulp.task('minify-css', function (cb) {
@@ -25,20 +24,6 @@ gulp.task('minify-css', function (cb) {
     );
 });
 
-gulp.task('minify-js', function (cb) {
-    pump([
-            gulp.src('js/*.js'),
-            ignore.exclude('*.min.js'),
-            uglify(),
-            rename({
-                suffix: '.min'
-            }),
-            gulp.dest('js')
-        ],
-        cb
-    );
-});
-
 gulp.task('minify-images', function (cb) {
     pump([
             gulp.src('images/*.svg'),
@@ -49,4 +34,4 @@ gulp.task('minify-images', function (cb) {
     );
 });
 
-gulp.task('default', gulp.parallel('minify-css', 'minify-js', 'minify-images'));
+gulp.task('default', gulp.parallel('minify-css', 'minify-images'));
