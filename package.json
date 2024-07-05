@@ -1,11 +1,10 @@
 {
     "devDependencies": {
-        "gulp": "^4.0.2",
+        "gulp": "^5.0.0",
         "gulp-csso": "^4.0.1",
-        "gulp-ignore": "^3.0.0",
         "gulp-rename": "^2.0.0",
-        "gulp-svgo": "^2.2.1",
-        "pump": "^3.0.0"
+        "gulp-svgo": "^2.2.1"
     },
-    "private": true
+    "private": true,
+    "packageManager": "npm@10.8.2"
 }

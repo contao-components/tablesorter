@@ -1,37 +1,28 @@
-'use strict';
+const { src, dest, parallel } = require('gulp');
+const csso = require('gulp-csso');
+const rename = require('gulp-rename');
+const svgo = require('gulp-svgo');
 
-var gulp = require('gulp'),
-    csso = require('gulp-csso'),
-    ignore = require('gulp-ignore'),
-    rename = require('gulp-rename'),
-    svgo = require('gulp-svgo'),
-    pump = require('pump');
+function css() {
+    return src(['css/*.css', '!css/*.min.css'])
+        .pipe(csso({
+            comments: false,
+            restructure: false
+        }))
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(dest('css'));
+}
 
-gulp.task('minify-css', function (cb) {
-    pump([
-            gulp.src('css/*.css'),
-            ignore.exclude('*.min.css'),
-            csso({
-                comments: false,
-                restructure: false
-            }),
-            rename({
-                suffix: '.min'
-            }),
-            gulp.dest('css')
-        ],
-        cb
-    );
-});
+function svg() {
+    return src('images/*.svg')
+        .pipe(svgo({
+            multipass: true,
+            plugins: [{
+                sortAttrs: true,
+                inlineStyles: { onlyMatchedOnce: false }
+            }]
+        }))
+        .pipe(dest('images'));
+}
 
-gulp.task('minify-images', function (cb) {
-    pump([
-            gulp.src('images/*.svg'),
-            svgo(),
-            gulp.dest('images')
-        ],
-        cb
-    );
-});
-
-gulp.task('default', gulp.parallel('minify-css', 'minify-images'));
+exports.default = parallel(css, svg);
